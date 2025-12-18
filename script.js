@@ -56,7 +56,7 @@ class HabitTracker {
                 e.target.classList.add('active');
                 this.currentDay = e.target.dataset.day;
                 this.renderDailyTasks();
-                
+
                 // Show/hide tomorrow note
                 const note = document.getElementById('tomorrowNote');
                 if (this.currentDay === 'tomorrow') {
@@ -73,10 +73,10 @@ class HabitTracker {
                 const section = e.target.dataset.section;
                 const content = e.target.nextElementSibling;
                 const icon = e.target.querySelector('.toggle-icon');
-                
+
                 // Check computed style, not inline style
                 const isHidden = window.getComputedStyle(content).display === 'none';
-                
+
                 if (isHidden) {
                     content.style.display = 'block';
                     icon.textContent = '−';
@@ -143,7 +143,7 @@ class HabitTracker {
         const startDateInput = document.getElementById('habitStartDate');
         const goalInput = document.getElementById('habitGoal');
         const whyInput = document.getElementById('habitWhy');
-        
+
         const name = nameInput.value.trim();
         const startDate = startDateInput.value || new Date().toISOString().split('T')[0];
         const goal = parseInt(goalInput.value) || 66;
@@ -193,7 +193,7 @@ class HabitTracker {
 
         const dayIndexStr = dayIndex.toString();
         const index = habit.completedDays.indexOf(dayIndexStr);
-        
+
         if (index > -1) {
             habit.completedDays.splice(index, 1);
         } else {
@@ -215,13 +215,13 @@ class HabitTracker {
     getDaysSinceCreation(createdAt) {
         const created = new Date(createdAt);
         created.setHours(0, 0, 0, 0); // Reset to start of day
-        
+
         const now = new Date();
         now.setHours(0, 0, 0, 0); // Reset to start of day
-        
+
         const diffTime = now - created;
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-        
+
         // Day 1 is the creation day, so add 1
         return diffDays + 1;
     }
@@ -250,26 +250,26 @@ class HabitTracker {
         const today = new Date();
         const dayOfWeek = today.getDay(); // 0=Sunday, 1=Monday, etc.
         const mondayOffset = dayOfWeek === 0 ? -6 : -(dayOfWeek - 1);
-        
+
         const monday = new Date(today);
         monday.setDate(today.getDate() + mondayOffset);
         monday.setHours(0, 0, 0, 0);
-        
+
         const currentDay = this.getDaysSinceCreation(habit.createdAt);
         const createdDate = new Date(habit.createdAt);
         createdDate.setHours(0, 0, 0, 0);
-        
+
         const weekDays = [];
         for (let i = 0; i < 7; i++) {
             const date = new Date(monday);
             date.setDate(monday.getDate() + i);
-            
+
             if (date >= createdDate) {
                 const dayIndex = this.getDaysSinceCreation(date.toISOString());
                 const isCompleted = habit.completedDays.includes(dayIndex.toString());
                 const isToday = date.toDateString() === today.toDateString();
                 const isFuture = date > today;
-                
+
                 weekDays.push({
                     day: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][i],
                     dayIndex: dayIndex,
@@ -279,7 +279,7 @@ class HabitTracker {
                 });
             }
         }
-        
+
         return weekDays;
     }
 
@@ -288,7 +288,7 @@ class HabitTracker {
         const dayOffset = this.currentDay === 'today' ? 0 : 1;
         const dayLabel = this.currentDay === 'today' ? 'Today' : 'Tomorrow';
         const isTomorrow = this.currentDay === 'tomorrow';
-        
+
         if (this.habits.length === 0) {
             checklist.innerHTML = `<p class="empty-state">No habits to track ${this.currentDay}</p>`;
             document.getElementById('dailyCompletion').textContent = '0/0 Complete';
@@ -302,7 +302,7 @@ class HabitTracker {
             const targetDay = this.getDaysSinceCreation(habit.createdAt) + dayOffset;
             const isCompleted = habit.completedDays.includes(targetDay.toString());
             const currentStreak = this.getCurrentStreak(habit.completedDays);
-            
+
             if (isCompleted) completedCount++;
 
             html += `
@@ -312,22 +312,22 @@ class HabitTracker {
                         <span class="task-streak">Streak: ${currentStreak} | Best: ${habit.bestStreak || 0}</span>
                         ${habit.why ? `<span class="task-why">${this.escapeHtml(habit.why)}</span>` : ''}
                     </div>
-                    ${isTomorrow ? 
-                        `<span class="btn-complete disabled" style="opacity: 0.5; cursor: not-allowed;">
+                    ${isTomorrow ?
+                    `<span class="btn-complete disabled" style="opacity: 0.5; cursor: not-allowed;">
                             ${isCompleted ? 'Planned' : 'Preview'}
                         </span>` :
-                        `<button class="btn-complete ${isCompleted ? 'completed' : ''}" 
+                    `<button class="btn-complete ${isCompleted ? 'completed' : ''}" 
                             data-quick-toggle="${habit.id}" 
                             data-day-offset="${dayOffset}">
                             ${isCompleted ? 'Done' : 'Mark Complete'}
                         </button>`
-                    }
+                }
                 </div>
             `;
         });
 
         checklist.innerHTML = html;
-        
+
         if (this.currentDay === 'today') {
             document.getElementById('dailyCompletion').textContent = `${completedCount}/${this.habits.length} Complete`;
         } else {
@@ -350,7 +350,7 @@ class HabitTracker {
 
     render() {
         const habitsList = document.getElementById('habitsList');
-        
+
         if (this.habits.length === 0) {
             habitsList.innerHTML = '<p class="empty-state">No habits yet. Create your first habit above.</p>';
             return;
@@ -368,7 +368,7 @@ class HabitTracker {
                 toggleBtn.addEventListener('click', (e) => {
                     const expandedView = document.getElementById(`habit-detail-${habit.id}`);
                     const icon = toggleBtn.querySelector('.habit-expand-icon');
-                    
+
                     if (expandedView.style.display === 'none') {
                         expandedView.style.display = 'flex';
                         icon.textContent = '−';
@@ -378,7 +378,7 @@ class HabitTracker {
                     }
                 });
             }
-            
+
             // Day cell clicks
             document.querySelectorAll(`[data-habit-id="${habit.id}"]`).forEach(cell => {
                 cell.addEventListener('click', (e) => {
@@ -386,15 +386,15 @@ class HabitTracker {
                     if (e.target.dataset.disabled === 'true') {
                         return;
                     }
-                    
+
                     const dayIndex = parseInt(e.target.dataset.dayIndex);
                     const currentDay = this.getDaysSinceCreation(habit.createdAt);
-                    
+
                     // Only allow marking TODAY - not past, not future
                     if (dayIndex !== currentDay) {
                         return;
                     }
-                    
+
                     this.toggleDay(habit.id, dayIndex);
                 });
             });
@@ -421,11 +421,11 @@ class HabitTracker {
         const completionRatio = `${daysCompleted}/${habit.goal}`;
         const completionPercent = habit.goal > 0 ? Math.round((daysCompleted / habit.goal) * 100) : 0;
         const daysRemaining = habit.goal - daysCompleted;
-        
+
         // Get motivational quote for this habit (rotate based on habit ID)
         const quoteIndex = parseInt(habit.id) % this.motivationalQuotes.length;
         const habitQuote = this.motivationalQuotes[quoteIndex];
-        
+
         // Motivational quote based on progress
         let motivationalQuote = '';
         if (completionPercent >= 100) {
@@ -471,12 +471,14 @@ class HabitTracker {
                         <div class="habit-actions">
                             <button class="btn-delete-small" data-delete-id="${habit.id}">Delete</button>
                         </div>
-                    </div>
-                    <div class="habit-tracker-column">
+ <div class="habit-tracker-column">
                         <div class="days-scroll-container">
                             ${this.renderFullDaysWithWeekMarkers(habit, daysSinceCreation)}
                         </div>
                     </div>
+
+                    </div>
+                   
                 </div>
             </div>
         `;
@@ -485,13 +487,13 @@ class HabitTracker {
     renderDaysGrid(habit, daysToShow) {
         const currentDay = this.getDaysSinceCreation(habit.createdAt);
         let grid = '';
-        
+
         // Show all days
         for (let i = 1; i <= daysToShow; i++) {
             const isCompleted = habit.completedDays.includes(i.toString());
             const isToday = i === currentDay;
             const classes = `day-cell ${isCompleted ? 'completed' : ''} ${isToday ? 'today' : ''}`;
-            
+
             grid += `
                 <div class="${classes}" 
                      data-habit-id="${habit.id}" 
@@ -501,28 +503,28 @@ class HabitTracker {
                 </div>
             `;
         }
-        
+
         return grid;
     }
 
     renderFullDaysWithWeekMarkers(habit, currentDay) {
         let html = '<div class="days-grid-with-markers">';
         const totalDays = Math.max(currentDay + 7, habit.goal); // Show at least goal days
-        
+
         for (let i = 1; i <= totalDays; i++) {
             // Add week marker every 7 days
             if (i === 1 || (i - 1) % 7 === 0) {
                 const weekNum = Math.ceil(i / 7);
                 html += `<div class="week-marker">Week ${weekNum}</div>`;
             }
-            
+
             const isCompleted = habit.completedDays.includes(i.toString());
             const isToday = i === currentDay;
             const isFuture = i > currentDay;
             const isPast = i < currentDay;
             const isDisabled = isPast || isFuture; // Disable both past and future days
             const classes = `day-cell ${isCompleted ? 'completed' : ''} ${isToday ? 'today' : ''} ${isFuture ? 'future' : ''} ${isPast ? 'past-day' : ''}`;
-            
+
             html += `
                 <div class="${classes}" 
                      data-habit-id="${habit.id}" 
@@ -533,24 +535,24 @@ class HabitTracker {
                 </div>
             `;
         }
-        
+
         html += '</div>';
         return html;
     }
 
     renderCompactDaysGrid(habit, currentDay) {
         let grid = '';
-        
+
         // Show: last 14 days + today + next 3 days
         const startDay = Math.max(1, currentDay - 14);
         const endDay = currentDay + 3;
-        
+
         for (let i = startDay; i <= endDay; i++) {
             const isCompleted = habit.completedDays.includes(i.toString());
             const isToday = i === currentDay;
             const isFuture = i > currentDay;
             const classes = `day-cell ${isCompleted ? 'completed' : ''} ${isToday ? 'today' : ''} ${isFuture ? 'future' : ''}`;
-            
+
             grid += `
                 <div class="${classes}" 
                      data-habit-id="${habit.id}" 
@@ -560,23 +562,23 @@ class HabitTracker {
                 </div>
             `;
         }
-        
+
         return grid;
     }
 
     showFullHistory(habit) {
         const modal = document.getElementById('historyModal');
         const gridContainer = document.getElementById('fullHistoryGrid');
-        
+
         const daysSinceCreation = this.getDaysSinceCreation(habit.createdAt);
         const daysToShow = Math.max(habit.goal, daysSinceCreation);
-        
+
         let html = `<h3 style="margin-bottom: 20px; grid-column: 1 / -1;">${this.escapeHtml(habit.name)} - Complete History</h3>`;
         html += this.renderDaysGrid(habit, daysToShow);
-        
+
         gridContainer.innerHTML = html;
         modal.classList.add('active');
-        
+
         // Re-attach click handlers for the full history grid
         document.querySelectorAll(`#fullHistoryGrid [data-habit-id="${habit.id}"]`).forEach(cell => {
             cell.addEventListener('click', (e) => {
@@ -611,7 +613,7 @@ class HabitTracker {
         this.habits.forEach(habit => {
             const daysSinceCreation = this.getDaysSinceCreation(habit.createdAt);
             const daysToCheck = Math.min(daysSinceCreation, last30Days);
-            
+
             let completedInLast30 = 0;
             for (let i = 1; i <= daysToCheck; i++) {
                 const dayIndex = daysSinceCreation - daysToCheck + i;
@@ -619,14 +621,14 @@ class HabitTracker {
                     completedInLast30++;
                 }
             }
-            
+
             if (daysToCheck > 0) {
                 consistencyPoints += (completedInLast30 / daysToCheck);
                 daysTracked++;
             }
         });
 
-        const consistencyScore = daysTracked > 0 
+        const consistencyScore = daysTracked > 0
             ? Math.round((consistencyPoints / daysTracked) * 40)
             : 0;
 
@@ -638,7 +640,7 @@ class HabitTracker {
         this.habits.forEach(habit => {
             const daysSinceCreation = this.getDaysSinceCreation(habit.createdAt);
             const daysToCheck = Math.min(daysSinceCreation, last7Days);
-            
+
             let completedInLast7 = 0;
             for (let i = 1; i <= daysToCheck; i++) {
                 const dayIndex = daysSinceCreation - daysToCheck + i;
@@ -646,14 +648,14 @@ class HabitTracker {
                     completedInLast7++;
                 }
             }
-            
+
             if (daysToCheck > 0) {
                 weeklyPoints += (completedInLast7 / daysToCheck);
                 weeklyTracked++;
             }
         });
 
-        const weeklyScore = weeklyTracked > 0 
+        const weeklyScore = weeklyTracked > 0
             ? Math.round((weeklyPoints / weeklyTracked) * 30)
             : 0;
 
@@ -664,7 +666,7 @@ class HabitTracker {
         this.habits.forEach(habit => {
             const currentStreak = this.getCurrentStreak(habit.completedDays);
             const daysSinceCreation = this.getDaysSinceCreation(habit.createdAt);
-            
+
             if (daysSinceCreation > 0) {
                 const streakRatio = Math.min(currentStreak / Math.min(daysSinceCreation, 30), 1);
                 streakPoints += streakRatio;
@@ -672,7 +674,7 @@ class HabitTracker {
             }
         });
 
-        const streakScore = streakTracked > 0 
+        const streakScore = streakTracked > 0
             ? Math.round((streakPoints / streakTracked) * 30)
             : 0;
 
@@ -681,15 +683,15 @@ class HabitTracker {
 
         // Update display
         document.getElementById('disciplineScore').textContent = disciplineScore;
-        
+
         const consistencyScoreEl = document.getElementById('consistencyScore');
         if (consistencyScoreEl) {
             consistencyScoreEl.textContent = Math.round((consistencyScore / 40) * 100) + '%';
         }
-        
-        document.getElementById('weeklyScore').textContent = 
+
+        document.getElementById('weeklyScore').textContent =
             Math.round((weeklyScore / 30) * 100) + '%';
-        
+
         const streakScoreEl = document.getElementById('streakScore');
         if (streakScoreEl) {
             streakScoreEl.textContent = Math.round((streakScore / 30) * 100) + '%';
@@ -747,7 +749,7 @@ class HabitTracker {
     checkWeeklyReflection() {
         const lastReflection = localStorage.getItem('lastReflectionPrompt');
         const now = new Date();
-        
+
         if (!lastReflection) {
             localStorage.setItem('lastReflectionPrompt', now.toISOString());
             return;
@@ -772,7 +774,7 @@ class HabitTracker {
     closeReflectionModal() {
         const modal = document.getElementById('reflectionModal');
         modal.classList.remove('active');
-        
+
         document.getElementById('reflectionWorked').value = '';
         document.getElementById('reflectionDidnt').value = '';
         document.getElementById('reflectionImprove').value = '';
@@ -799,14 +801,14 @@ class HabitTracker {
         this.reflections.unshift(reflection);
         this.saveReflectionsToStorage();
         localStorage.setItem('lastReflectionPrompt', new Date().toISOString());
-        
+
         this.closeReflectionModal();
         this.renderReflections();
     }
 
     renderReflections() {
         const container = document.getElementById('reflectionsList');
-        
+
         if (this.reflections.length === 0) {
             container.innerHTML = '<p class="empty-state">No reflections yet</p>';
             return;
@@ -815,10 +817,10 @@ class HabitTracker {
         let html = '';
         this.reflections.forEach(reflection => {
             const date = new Date(reflection.date);
-            const formattedDate = date.toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+            const formattedDate = date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
             });
 
             html += `
@@ -896,7 +898,7 @@ class HabitTracker {
             }
 
             const milestones = [7, 21, 30, 100, 365];
-            
+
             for (const milestone of milestones) {
                 if (streak >= milestone && !this.shownMilestones[habitKey].includes(milestone)) {
                     if (streak > highestStreak) {
@@ -920,7 +922,7 @@ class HabitTracker {
     showMilestone(milestone) {
         const messageEl = document.getElementById('milestoneMessage');
         const textEl = document.getElementById('milestoneText');
-        
+
         textEl.textContent = milestone.message;
         messageEl.classList.remove('hidden');
 
