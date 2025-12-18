@@ -1440,41 +1440,116 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
     .about-konik-section {
         order: 8;
-        padding: 40px 20px;
+        padding: 20px 15px;
+    }
+
+    .about-content {
+        max-width: 100%;
     }
 
     .about-logo {
-        max-width: 120px;
+        max-width: 50px;
+        margin-right: 10px;
     }
 
     .about-konik-section h2 {
-        font-size: 1.6rem;
-    }
-
-    .about-intro {
-        font-size: 1rem;
-    }
-
-    .pillars-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-        margin-bottom: 20px;
-    }
-
-    .pillar {
-        padding: 12px;
-    }
-
-    .pillar h3 {
         font-size: 1.1rem;
     }
 
-    .pillar p {
+    .about-intro {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+        margin-top: 12px;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .pillar {
+        padding: 10px 12px;
+    }
+
+    .pillar h3 {
         font-size: 0.9rem;
+        margin-bottom: 5px;
+    }
+
+    .pillar p {
+        font-size: 0.75rem;
+        line-height: 1.4;
     }
 
     .konik-motto {
-        font-size: 1.4rem;
+        font-size: 1rem;
+    }
+
+    .about-footer {
+        padding-top: 12px;
+    }
+
+    /* Habits section mobile responsive */
+    .habit-compact-view {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    .habit-compact-left {
+        width: 100%;
+    }
+
+    .habit-compact-quote {
+        margin-left: 36px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .quote-text {
+        font-size: 0.75rem;
+    }
+
+    .habit-compact-name {
+        font-size: 0.95rem;
+    }
+
+    .habit-compact-progress {
+        font-size: 0.75rem;
+    }
+
+    .habit-expanded-view {
+        flex-direction: column;
+        padding: 0 15px 15px 15px;
+        gap: 15px;
+    }
+
+    .habit-info-column {
+        width: 100%;
+    }
+
+    .habit-tracker-column {
+        width: 100%;
+    }
+
+    .days-scroll-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .habit-metadata {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .meta-item {
+        font-size: 0.8rem;
+    }
+
+    .habit-description {
+        font-size: 0.85rem;
     }
 
     /* Enhance priority section on mobile */
