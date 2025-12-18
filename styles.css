@@ -1440,46 +1440,54 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
     .about-konik-section {
         order: 8;
-        padding: 20px 15px;
+        padding: 20px 16px;
     }
 
     .about-content {
         max-width: 100%;
+        text-align: center;
     }
 
     .about-logo {
-        max-width: 50px;
-        margin-right: 10px;
+        max-width: 45px;
+        margin-right: 8px;
+        display: inline-block;
     }
 
     .about-konik-section h2 {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        display: inline-block;
+        margin-bottom: 0;
     }
 
     .about-intro {
-        font-size: 0.85rem;
-        margin-bottom: 15px;
-        margin-top: 12px;
+        font-size: 0.8rem;
+        margin-bottom: 16px;
+        margin-top: 10px;
+        line-height: 1.5;
+        text-align: center;
     }
 
     .pillars-grid {
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 15px;
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+        margin-bottom: 16px;
+        text-align: left;
     }
 
     .pillar {
-        padding: 10px 12px;
+        padding: 12px 14px;
+        border-left: 2px solid var(--primary);
     }
 
     .pillar h3 {
-        font-size: 0.9rem;
-        margin-bottom: 5px;
+        font-size: 0.95rem;
+        margin-bottom: 6px;
     }
 
     .pillar p {
-        font-size: 0.75rem;
-        line-height: 1.4;
+        font-size: 0.8rem;
+        line-height: 1.5;
     }
 
     .konik-motto {
@@ -1491,39 +1499,64 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     }
 
     /* Habits section mobile responsive */
+    .habits-section {
+        padding: 20px 16px;
+    }
+
+    .habits-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 16px;
+    }
+
+    .habit-row {
+        margin-bottom: 12px;
+    }
+
     .habit-compact-view {
         flex-direction: column;
         align-items: flex-start;
-        padding: 12px 15px;
+        padding: 14px 16px;
         gap: 10px;
     }
 
     .habit-compact-left {
         width: 100%;
+        gap: 10px;
     }
 
-    .habit-compact-quote {
-        margin-left: 36px;
-        max-width: 100%;
-        width: 100%;
+    .habit-expand-icon {
+        font-size: 18px;
+        width: 20px;
     }
 
-    .quote-text {
-        font-size: 0.75rem;
+    .habit-compact-info {
+        flex: 1;
     }
 
     .habit-compact-name {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        font-weight: 600;
     }
 
     .habit-compact-progress {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .habit-compact-quote {
+        margin-left: 30px;
+        max-width: 100%;
+        width: calc(100% - 30px);
+    }
+
+    .quote-text {
+        font-size: 0.78rem;
+        line-height: 1.5;
     }
 
     .habit-expanded-view {
         flex-direction: column;
-        padding: 0 15px 15px 15px;
-        gap: 15px;
+        padding: 0 16px 16px 16px;
+        gap: 16px;
     }
 
     .habit-info-column {
@@ -1537,19 +1570,28 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     .days-scroll-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
     }
 
     .habit-metadata {
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
+        align-items: flex-start;
     }
 
     .meta-item {
-        font-size: 0.8rem;
+        font-size: 0.82rem;
     }
 
     .habit-description {
         font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .btn-delete-small {
+        width: 100%;
+        margin-top: 10px;
     }
 
     /* Enhance priority section on mobile */
