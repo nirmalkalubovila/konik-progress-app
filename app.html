@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A discipline-first habit tracker by KONIK. Build consistency through systematic tracking. No login. Offline. Private.">
+    <meta name="description"
+        content="A discipline-first habit tracker by KONIK. Build consistency through systematic tracking. No login. Offline. Private.">
     <meta name="keywords" content="habit tracker, discipline, consistency, KONIK, progress tracking, habits">
     <meta name="author" content="KONIK">
     <meta name="theme-color" content="#000000">
@@ -12,13 +14,32 @@
     <link rel="stylesheet" href="styles-addon.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="container" id="mainApp">
-      
+
 
         <div class="main-content">
+            <!-- Discipline Score -->
+            <section class="discipline-score-section">
+                <div class="discipline-score-container">
+                    <div class="score-display">
+                        <div class="score-value" id="disciplineScore">0</div>
+                        <div class="score-label">Discipline Score</div>
+                    </div>
+                    <div class="score-breakdown">
+                        <div class="breakdown-item">
+                            <span class="breakdown-label">Weekly Rate</span>
+                            <span class="breakdown-value" id="weeklyScore">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
             <!-- Milestone Message -->
             <div id="milestoneMessage" class="milestone-message hidden">
                 <div class="milestone-content">
@@ -41,28 +62,16 @@
                 <div class="today-checklist" id="todayChecklist">
                     <p class="empty-state">No tasks scheduled</p>
                 </div>
-                <p class="tomorrow-note" id="tomorrowNote" style="display: none;">Tomorrow is planned, not completed.</p>
+                <p class="tomorrow-note" id="tomorrowNote" style="display: none;">Tomorrow is planned, not completed.
+                </p>
             </section>
 
-            <!-- Discipline Score -->
-            <section class="discipline-score-section">
-                <div class="discipline-score-container">
-                    <div class="score-display">
-                        <div class="score-value" id="disciplineScore">0</div>
-                        <div class="score-label">Discipline Score</div>
-                    </div>
-                    <div class="score-breakdown">
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Weekly Rate</span>
-                            <span class="breakdown-value" id="weeklyScore">0%</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
 
             <!-- Add Habit Section -->
             <section class="add-habit-section secondary-section collapsible">
-                <h2 class="section-toggle" data-section="add-habit">Create New Habit <span class="toggle-icon">+</span></h2>
+                <h2 class="section-toggle" data-section="add-habit">Create New Habit <span class="toggle-icon">+</span>
+                </h2>
                 <div class="section-content" id="addHabitContent" style="display: none;">
                     <div class="form-row">
                         <div class="form-field">
@@ -77,14 +86,16 @@
                     <div class="form-row">
                         <div class="form-field">
                             <label for="habitGoal" class="field-label">Days to Build Habit</label>
-                            <input type="number" id="habitGoal" placeholder="66" min="1" value="66" title="Number of consecutive days needed to form this habit (default: 66 days)">
+                            <input type="number" id="habitGoal" placeholder="66" min="1" value="66"
+                                title="Number of consecutive days needed to form this habit (default: 66 days)">
                             <span class="field-hint">Scientific average: 66 days</span>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-field full-width">
                             <label for="habitWhy" class="field-label">Why This Matters</label>
-                            <textarea id="habitWhy" placeholder="Define your purpose for building this habit" maxlength="150" rows="3"></textarea>
+                            <textarea id="habitWhy" placeholder="Define your purpose for building this habit"
+                                maxlength="150" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-row">
@@ -101,9 +112,9 @@
                 </div>
             </section>
 
-           
 
-         
+
+
 
             <!-- About KONIK -->
             <section class="about-konik-section">
@@ -112,8 +123,9 @@
                         <img src="KONIK NEW - BLACK.png" alt="KONIK" class="about-logo">
                         <h2>Why KONIK Built This</h2>
                     </div>
-                    <p class="about-intro">This tracker exists because discipline is not a feeling. It is a system. KONIK is built on the belief that progress comes from consistent action, not motivation.</p>
-                    
+                    <p class="about-intro">This tracker exists because discipline is not a feeling. It is a system.
+                        KONIK is built on the belief that progress comes from consistent action, not motivation.</p>
+
                     <div class="pillars-grid">
                         <div class="pillar">
                             <h3>Consistency</h3>
@@ -141,8 +153,9 @@
         </div>
     </div>
 
-  
+
 
     <script src="script.js?v=2"></script>
 </body>
+
 </html>
