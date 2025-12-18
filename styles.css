@@ -1555,8 +1555,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
     .habit-expanded-view {
         flex-direction: column;
-        padding: 0 16px 16px 16px;
-        gap: 16px;
+        padding: 0 12px 12px 12px;
+        gap: 12px;
     }
 
     .habit-info-column {
@@ -1570,13 +1570,16 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     .days-scroll-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 8px;
+        padding-bottom: 4px;
+        margin: 0 -4px;
     }
 
     .habit-metadata {
         flex-direction: column;
         gap: 6px;
         align-items: flex-start;
+        margin-top: 8px;
+        margin-bottom: 10px;
     }
 
     .meta-item {
@@ -1586,12 +1589,53 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     .habit-description {
         font-size: 0.85rem;
         line-height: 1.5;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
+    }
+
+    .habit-meta {
+        padding: 0;
+    }
+
+    .habit-metadata {
+        margin-top: 8px;
+        margin-bottom: 10px;
+    }
+
+    .motivation-quote {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        margin-top: 10px;
     }
 
     .btn-delete-small {
         width: 100%;
         margin-top: 10px;
+    }
+
+    /* Days grid mobile optimization */
+    .week-marker {
+        font-size: 0.7rem;
+        padding: 6px 0 8px 0;
+        margin-bottom: 8px;
+        border-bottom-width: 1.5px;
+    }
+
+    .days-grid-with-markers {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .days-grid-with-markers .day-cell {
+        margin: 1px;
+    }
+
+    .motivation-quote {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+        margin-top: 8px;
     }
 
     /* Enhance priority section on mobile */
@@ -1671,9 +1715,15 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     }
 
     .day-cell {
-        width: 30px;
-        height: 30px;
-        font-size: 0.7rem;
+        width: 24px;
+        height: 24px;
+        font-size: 0.65rem;
+        margin: 2px;
+        border-width: 1.5px;
+    }
+
+    .day-cell.today {
+        border-width: 2px;
     }
 
     .task-item {
