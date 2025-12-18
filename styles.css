@@ -36,58 +36,58 @@ body {
 
 /* Hero Landing Section */
 .hero-section {
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--background);
     border-bottom: 1px solid var(--border);
-    padding: 40px 20px;
+    padding: 20px 20px;
 }
 
 .hero-container {
-    max-width: 800px;
+    max-width: 700px;
     text-align: center;
-    padding: 60px 20px;
+    padding: 30px 20px;
 }
 
 .hero-logo {
-    max-width: 200px;
+    max-width: 100px;
     height: auto;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .hero-headline {
     font-family: 'Atmospheric', 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.2;
     color: var(--primary);
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     font-weight: 700;
     letter-spacing: 0.5px;
 }
 
 .hero-subtext {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: 45px;
+    margin-bottom: 25px;
     font-weight: 400;
     letter-spacing: 0.3px;
 }
 
 .btn-hero {
-    padding: 18px 50px;
+    padding: 14px 40px;
     background-color: var(--primary);
     color: white;
     border: none;
     border-radius: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.5px;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     text-transform: uppercase;
 }
 
@@ -99,12 +99,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .trust-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     font-weight: 400;
     letter-spacing: 0.3px;
