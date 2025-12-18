@@ -1,0 +1,196 @@
+/* KONIK Simplified UI - Additional Styles */
+
+/* Tomorrow Note */
+.tomorrow-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    padding: 15px;
+    background-color: var(--surface);
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+/* Core Stats Section */
+.core-stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 0;
+}
+
+.core-stats-section .stat-card {
+    background-color: var(--surface);
+    padding: 25px;
+    border: 1px solid var(--border);
+    cursor: default;
+}
+
+.detail-toggle {
+    cursor: pointer !important;
+    transition: all 0.3s ease;
+}
+
+.detail-toggle:hover {
+    background-color: var(--hover);
+    border-color: var(--primary);
+}
+
+.detail-toggle .stat-value {
+    font-size: 1.5rem !important;
+    color: var(--primary);
+}
+
+/* Extended Stats Section */
+.extended-stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.extended-stats-section.hidden {
+    display: none;
+}
+
+.extended-stats-section .stat-card {
+    background-color: var(--surface);
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+
+/* Collapsible Sections */
+.collapsible .section-toggle {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.collapsible .section-toggle:hover {
+    color: var(--primary);
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+    font-weight: normal;
+    transition: transform 0.2s ease;
+}
+
+.collapsible .section-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.collapsible .section-content.collapsed {
+    display: none;
+}
+
+/* History Modal */
+#historyModal .modal-content {
+    max-width: 90%;
+    max-height: 80vh;
+}
+
+#historyModal .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.full-history-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 8px;
+    padding: 20px 0;
+}
+
+.full-history-grid .day-cell {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+/* Compact habit grid - show limited days */
+.compact-grid {
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.compact-grid .days-grid {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+/* Future day cells */
+.day-cell.future {
+    opacity: 0.35;
+    background-color: white;
+    border: 2px dashed var(--border);
+    cursor: not-allowed;
+}
+
+.day-cell.future:hover {
+    opacity: 0.35;
+    background-color: white;
+    transform: none;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+.view-full-history-btn {
+    padding: 8px 16px;
+    background-color: var(--surface);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.view-full-history-btn:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .discipline-score-container {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+    }
+    
+    .score-breakdown {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .core-stats-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .extended-stats-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .compact-grid .days-grid {
+        gap: 4px;
+    }
+    
+    .day-cell {
+        min-width: 35px;
+        min-height: 35px;
+        font-size: 0.7rem;
+    }
+}
