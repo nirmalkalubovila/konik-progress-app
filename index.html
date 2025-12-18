@@ -9,174 +9,33 @@
     <meta name="theme-color" content="#000000">
     <title>KONIK Progress Tracker - Make It Happen</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles-addon.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container" id="mainApp">
-        <header>
-            <img src="KONIK NEW - BLACK.png" alt="KONIK" class="logo">
-            <h1>KONIK Progress Tracker</h1>
-            <p class="subtitle">Make It Happen</p>
-        </header>
-
-        <div class="main-content">
-            <!-- Milestone Message -->
-            <div id="milestoneMessage" class="milestone-message hidden">
-                <div class="milestone-content">
-                    <p class="milestone-text" id="milestoneText"></p>
-                    <button class="milestone-dismiss" id="dismissMilestone">&times;</button>
-                </div>
-            </div>
-
-            <!-- Daily Status -->
-            <section class="daily-status-section priority-section">
-                <div class="status-header">
-                    <h2 id="dailyGreeting">Daily Tasks</h2>
-                    <div class="daily-completion" id="dailyCompletion">0/0 Complete</div>
-                </div>
-                <p class="micro-text">Only today is required.</p>
-                <div class="day-tabs">
-                    <button class="day-tab active" data-day="today">Today</button>
-                    <button class="day-tab tomorrow-tab" data-day="tomorrow">Tomorrow</button>
-                </div>
-                <div class="today-checklist" id="todayChecklist">
-                    <p class="empty-state">No tasks scheduled</p>
-                </div>
-                <p class="tomorrow-note" id="tomorrowNote" style="display: none;">Tomorrow is planned, not completed.</p>
-            </section>
-
-            <!-- Discipline Score -->
-            <section class="discipline-score-section">
-                <div class="discipline-score-container">
-                    <div class="score-display">
-                        <div class="score-value" id="disciplineScore">0</div>
-                        <div class="score-label">Discipline Score</div>
-                    </div>
-                    <div class="score-breakdown">
-                        <div class="breakdown-item">
-                            <span class="breakdown-label">Weekly Rate</span>
-                            <span class="breakdown-value" id="weeklyScore">0%</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Add Habit Section -->
-            <section class="add-habit-section secondary-section collapsible">
-                <h2 class="section-toggle" data-section="add-habit">Create New Habit <span class="toggle-icon">+</span></h2>
-                <div class="section-content" id="addHabitContent" style="display: none;">
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label for="habitName" class="field-label">Habit Name</label>
-                            <input type="text" id="habitName" placeholder="Enter habit name" maxlength="30">
-                        </div>
-                        <div class="form-field">
-                            <label for="habitStartDate" class="field-label">Start Date</label>
-                            <input type="date" id="habitStartDate" title="Start date for tracking this habit">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field">
-                            <label for="habitGoal" class="field-label">Days to Build Habit</label>
-                            <input type="number" id="habitGoal" placeholder="66" min="1" value="66" title="Number of consecutive days needed to form this habit (default: 66 days)">
-                            <span class="field-hint">Scientific average: 66 days</span>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-field full-width">
-                            <label for="habitWhy" class="field-label">Why This Matters</label>
-                            <textarea id="habitWhy" placeholder="Define your purpose for building this habit" maxlength="150" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <button id="addHabitBtn" class="btn-primary">Add Habit</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Habits List -->
-            <section class="habits-section secondary-section">
-                <h2>Your Habits</h2>
-                <div id="habitsList" class="habits-list">
-                    <p class="empty-state">No habits created</p>
-                </div>
-            </section>
-
-           
-
-            <!-- Weekly Reflections -->
-            <section class="reflections-section secondary-section">
-                <h2>Weekly Reflections</h2>
-                <button id="openReflectionBtn" class="btn-primary">New Reflection</button>
-                <div id="reflectionsList" class="reflections-list">
-                    <p class="empty-state">No reflections yet</p>
-                </div>
-            </section>
-
-            <!-- About KONIK -->
-            <section class="about-konik-section">
-                <div class="about-content">
-                    <img src="KONIK NEW - BLACK.png" alt="KONIK" class="about-logo">
-                    <h2>Why KONIK Built This</h2>
-                    <p class="about-intro">This tracker exists because discipline is not a feeling. It is a system. KONIK is built on the belief that progress comes from consistent action, not motivation.</p>
-                    
-                    <div class="pillars-grid">
-                        <div class="pillar">
-                            <h3>Consistency</h3>
-                            <p>Show up every day. Small actions compound into transformation.</p>
-                        </div>
-                        <div class="pillar">
-                            <h3>Progress</h3>
-                            <p>Measure what matters. Track to improve, not to impress.</p>
-                        </div>
-                        <div class="pillar">
-                            <h3>Systems</h3>
-                            <p>Build processes that work. Results follow reliable systems.</p>
-                        </div>
-                        <div class="pillar">
-                            <h3>Discipline</h3>
-                            <p>Do what needs doing. Especially when you don't feel like it.</p>
-                        </div>
-                    </div>
-
-                    <div class="about-footer">
-                        <p class="konik-motto">Make It Happen</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- Reflection Modal -->
-    <div id="reflectionModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Weekly Reflection</h2>
-                <button class="modal-close" id="closeReflectionModal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="reflection-field">
-                    <label for="reflectionWorked">What worked?</label>
-                    <textarea id="reflectionWorked" rows="3" maxlength="300"></textarea>
-                </div>
-                <div class="reflection-field">
-                    <label for="reflectionDidnt">What didn't?</label>
-                    <textarea id="reflectionDidnt" rows="3" maxlength="300"></textarea>
-                </div>
-                <div class="reflection-field">
-                    <label for="reflectionImprove">What will you improve?</label>
-                    <textarea id="reflectionImprove" rows="3" maxlength="300"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="saveReflectionBtn" class="btn-primary">Save Reflection</button>
+    <!-- Hero Landing Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <img src="KONIK NEW - BLACK.png" alt="KONIK" class="hero-logo">
+            <h1 class="hero-headline">Build habits. Build consistency. Build your best version.</h1>
+            <p class="hero-subtext">A discipline-first habit tracker by KONIK</p>
+            <button class="btn-hero" id="startTrackingBtn">Start Tracking</button>
+            <div class="trust-labels">
+                <span class="trust-label">No login</span>
+                <span class="trust-separator">·</span>
+                <span class="trust-label">Offline</span>
+                <span class="trust-separator">·</span>
+                <span class="trust-label">Private</span>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="script.js"></script>
+    <script>
+        // Redirect to app when Start Tracking is clicked
+        document.getElementById('startTrackingBtn').addEventListener('click', () => {
+            window.location.href = 'app.html';
+        });
+    </script>
 </body>
 </html>
