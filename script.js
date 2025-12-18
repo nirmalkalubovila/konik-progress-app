@@ -460,14 +460,13 @@ class HabitTracker {
                 <div class="habit-expanded-view" id="habit-detail-${habit.id}" style="display: none;">
                     <div class="habit-info-column">
                         <div class="habit-meta">
-                            <div class="habit-title" title="${this.escapeHtml(habit.name)}">${this.escapeHtml(habit.name)}</div>
                             ${habit.why ? `<div class="habit-description">${this.escapeHtml(habit.why)}</div>` : ''}
                             <div class="habit-metadata">
                                 <span class="meta-item"><strong>Started:</strong> ${formattedStartDate}</span>
-                                <span class="meta-item"><strong>Progress:</strong> ${completionRatio} (${completionPercent}%)</span>
+                               
                                 <span class="meta-item"><strong>Streak:</strong> ${streak} days</span>
                             </div>
-                            ${motivationalQuote}
+                            
                         </div>
                         <div class="habit-actions">
                             <button class="btn-delete-small" data-delete-id="${habit.id}">Delete</button>
