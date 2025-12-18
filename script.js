@@ -471,14 +471,12 @@ class HabitTracker {
                         <div class="habit-actions">
                             <button class="btn-delete-small" data-delete-id="${habit.id}">Delete</button>
                         </div>
- <div class="habit-tracker-column">
+                    </div>
+                    <div class="habit-tracker-column">
                         <div class="days-scroll-container">
                             ${this.renderFullDaysWithWeekMarkers(habit, daysSinceCreation)}
                         </div>
                     </div>
-
-                    </div>
-                   
                 </div>
             </div>
         `;

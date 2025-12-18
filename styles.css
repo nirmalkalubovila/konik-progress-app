@@ -1042,7 +1042,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 .habit-expanded-view {
     display: flex;
-    gap: 20px;
+    gap: 12px;
     padding: 0 20px 8px 20px;
 }
 
